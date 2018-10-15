@@ -1,3 +1,12 @@
+#######################################################################
+# Copyright (C) 2017 Shangtong Zhang(zhangshangtong.cpp@gmail.com)    #
+# Permission given to modify the code as long as you keep this        #
+# declaration at the top                                              #
+#######################################################################
+
+# Modified by Jeremi Kaczmarczyk (jeremi.kaczmarczyk@gmail.com) 2018 
+# For Udacity Deep Reinforcement Learning Nanodegree
+
 import numpy as np
 import torch
 import torch.nn as nn
