@@ -10,16 +10,22 @@ Action probabilites are taken from the normal distribution.
 
 ## Parameters and hyperparameters
 
-### Actor network
+### Neural networks
+
+The actor network directly outputs action which agent will take and use without any additional clipping, normalizing or preprocession. That's why it outputs 4 values - size of the action space. The critic network is not directly needed for the PPO algorithm (original paper describes policy network and surrogate function which counts ration of new action probabilites to old ones - actor would suffice) but it's very helpful to compute advantages which requires value for state.
+
+The hidden size parameters was choosen after careful tuning. I started from 64 nodes and after every increase agent took less episodes to converge (while also needed more computing power). 
+
+#### Actor network
 
 - 3 fully connected layers
-- 33 input nodes, 4 output nodes, 512 hidden nodes in each layer
+- 33 input nodes [observation vector size], 4 output nodes [action vector size], 512 hidden nodes in each layer
 - ReLU activations, tanh on last layer
 
-### Critic network
+#### Critic network
 
 - 3 fully connected layers
-- 33 input nodes, 1 output nodes, 512 hidden nodes in each layer
+- 33 input nodes [observation vector size], 1 output nodes, 512 hidden nodes in each layer
 - ReLU activations, no activation on last layer
 
 ### Main hyperparameters
@@ -43,6 +49,13 @@ Episode: 250 Total score this episode: 34.51249922858551 Last 100 average: 30.99
 ```
 
 and this model is saved as `models/ppo-max-hiddensize-512.pth`
+
+## Next steps
+
+- **Hyperparameter tuning** - I focused on tuning hidden size and gradient clip which gave major improvements. Other parameters would probably impact learning and it's worth to check how.
+- **DDPG** -  I gave up on DDPG as it was learning *very* slowly. But it would be good to se how it *actualy* compares with PPO, not just how it feels.
+- **Try PPO on other environment** - to see if PPO will be still good.
+- **Write generic implementation** - to reuse this repository on other problems and with other libraries (like `Gym`).
 
 ## GIFS
 

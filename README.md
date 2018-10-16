@@ -43,4 +43,5 @@ Run `Soultion.ipynb` for further details.
 ## Sources
 
 [1] Original PPO paper by Open AI [Proximal Policy Optimization Algorithm](https://arxiv.org/pdf/1707.06347.pdf)
+
 [2] Repository of PyTorch Deep RL implementations [DeepRL](https://github.com/ShangtongZhang/DeepRL)
